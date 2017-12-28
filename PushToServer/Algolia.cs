@@ -36,7 +36,7 @@ namespace PushToServer
             var data = GetJsonObject(GetJsonContent(indexName));
 
             Index index = _client.InitIndex(indexName);
-            index.AddObjects(data);
+            var addedObjects = index.AddObjects(data);
             return index;
         }
 
