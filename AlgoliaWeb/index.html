@@ -5,6 +5,7 @@
 
     <script src="https://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2/moment.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/fontawesome/4.3.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.4/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="style/style.css" />
@@ -14,10 +15,17 @@
     <section class="panel">
         <header class="panel-heading">
             <div class="search_box">
-                <form action="#" method="get">
-                    <input autocomplete="off" class="autocomplete" id="q" placeholder="Start typing" type="text" spellcheck="false" />
-                    <div class="searchbutton">
-                        <i class="icon-search icon-large"></i>
+                <form action="#" method="get" class="form-inline">
+                    <div class="form-group">
+                        <input autocomplete="off" class="autocomplete form-control" id="q" placeholder="Start typing" type="text" spellcheck="false" />
+                    </div>
+                    <div class="form-group">
+                        <input type="date" id="dt" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="form-control" id="btnSearch">
+                            <i class="fa fa-search"></i>
+                        </button>
                     </div>
                 </form>
             </div>
@@ -57,8 +65,8 @@
             var html = '';
             for (var i = 0; i < content.hits.length; ++i) {
                 var hit = content.hits[i];
-                console.log(hit._highlightResult);
-                html += '<div class="hit">';
+                //console.log(hit);
+                html += '<div class="hit" onclick=getDetails("' + hit.objectID + '")>';
                 for (var attribute in hit._highlightResult) {
                     //console.log("attribute: " + attribute);
                     //console.log(hit._highlightResult[attribute]);
@@ -76,8 +84,9 @@
                         html += ' - <span>CommentText: </span>' + hit._highlightResult[attribute].BlogPost.Comment.text.value;
                         html += ' - <span>CommentByUser: </span>' + hit._highlightResult[attribute].BlogPost.Comment.username.value;
                         html += ' - <span>CommentDate: </span>' + hit._highlightResult[attribute].BlogPost.Comment.dateposted.value;
+                        html += ' - <span>UnixTime: </span>' + hit.Blog.BlogPost.Comment.DatePostedUnixTimestamp;
                     }
-                    
+
                     html += '</div>';
                 }
                 html += '</div>';
@@ -85,17 +94,28 @@
             $('#hits').html(html);
         }
 
+        var index;
+        var $inputfield;
         $(document).ready(function () {
-            var $inputfield = $('#q');
+            $inputfield = $('#q');
 
             // Replace the following values by your ApplicationID and ApiKey.
             var client = algoliasearch('NHP4XM4T2D', '7e7988be69b1535b598eedafc9b9a293');
             // Replace the following value by the name of the index you want to query.
-            var index = client.initIndex('Blogs');
+            index = client.initIndex('Blogs');
 
             $inputfield.keyup(function () {
-                if ($.trim($inputfield.val()).length > 0)
-                    index.search($inputfield.val(), searchCallback);
+                if ($.trim($inputfield.val()).length > 0) {
+                    var filter = "";
+                    if ($("#dt").val()) {
+                        var unixDt = moment($("#dt").val()).unix();
+                        filter = "Blog.BlogPost.Comment.DatePostedUnixTimestamp = " + unixDt;
+                    }
+                    index.search({
+                        query: $inputfield.val(),
+                        filters: filter
+                    }, searchCallback);
+                }
             }).focus().closest('form').on('submit', function () {
                 // on form submit, store the query string in the anchor
                 location.replace('#q=' + encodeURIComponent($inputfield.val()));
@@ -104,9 +124,20 @@
 
             // check if there is a query in the anchor: http://example.org/#q=my+query
             if (location.hash && location.hash.indexOf('#q=') === 0) {
+                console.log(location.hash);
                 var q = decodeURIComponent(location.hash.substring(3));
                 $inputfield.val(q).trigger('keyup');
             }
+        });
+
+        function getDetails(objectId) {
+            index.getObject(objectId, function (err, content) {
+                console.log(content);
+            });
+        }
+
+        $("#btnSearch").on("click", function () {
+            $inputfield.trigger('keyup');
         });
     </script>
 </body>

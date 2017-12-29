@@ -58,7 +58,7 @@ namespace PushToServer.DataModels
             }
             set {
                 _datePosted = value;
-                _unixDatePosted = (int)(_datePosted.Subtract(new DateTime(1970, 1, 1))).TotalSeconds; ;
+                _unixDatePosted = (int)(new DateTimeOffset(_datePosted.Date).ToUnixTimeSeconds());
             }
         }
 
