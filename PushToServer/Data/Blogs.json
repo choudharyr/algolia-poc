@@ -6,6 +6,7 @@
         "BlogPost": {
           "id": 727,
           "title": "Rapdudor  Company",
+          "email":  "rahul@symbyotic.com",
           "Comment": {
             "id": 1,
             "username": "dougcatcher",
@@ -22,6 +23,7 @@
         "BlogPost": {
           "id": 818,
           "title": "Cipbanex  Company",
+          "email": "rahul@symbyotic.com",
           "Comment": {
             "id": 2,
             "username": "dougcatcher",
@@ -38,6 +40,7 @@
         "BlogPost": {
           "id": 769,
           "title": "Zeehupegar  Company",
+          "email": "choudharyr@gmail.com",
           "Comment": {
             "id": 3,
             "username": "dougcatcher",
@@ -54,6 +57,7 @@
         "BlogPost": {
           "id": 559,
           "title": "Grozapan WorldWide Corp.",
+          "email": "choudharyr@gmail.com",
           "Comment": {
             "id": 4,
             "username": "dougcatcher",
@@ -70,6 +74,7 @@
         "BlogPost": {
           "id": 207,
           "title": "Hapcadantor WorldWide ",
+          "email": "choudharyr@gmail.com",
           "Comment": {
             "id": 5,
             "username": "admin",
@@ -86,6 +91,7 @@
         "BlogPost": {
           "id": 4,
           "title": "Qwipebex International ",
+          "email": "rahul@symbyotic.com",
           "Comment": {
             "id": 6,
             "username": "dougcatcher",
@@ -102,6 +108,7 @@
         "BlogPost": {
           "id": 907,
           "title": "Supcadollex Direct ",
+          "email": "rahul@symbyotic.com",
           "Comment": {
             "id": 7,
             "username": "dougcatcher",
@@ -118,6 +125,7 @@
         "BlogPost": {
           "id": 443,
           "title": "Indudower Direct ",
+          "email": "rahul@symbyotic.com",
           "Comment": {
             "id": 8,
             "username": "admin",
@@ -134,6 +142,7 @@
         "BlogPost": {
           "id": 978,
           "title": "Varsipover WorldWide Corp.",
+          "email": "rahul@symbyotic.com",
           "Comment": {
             "id": 9,
             "username": "dougcatcher",
@@ -150,6 +159,7 @@
         "BlogPost": {
           "id": 274,
           "title": "Moncadopicator  Group",
+          "email": "rahul@symbyotic.com",
           "Comment": {
             "id": 10,
             "username": "admin",

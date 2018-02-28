@@ -46,5 +46,12 @@ namespace PushToServer
             jObject.Add("searchableAttributes", new JArray(searchableAttributes));
             index.SetSettings(jObject);
         }
+
+        public void SetFacetAttributes(Index index, params string[] facetAttributes)
+        {
+            JObject jObject = new JObject();
+            jObject.Add("attributesForFaceting", new JArray(facetAttributes));
+            index.SetSettings(jObject);
+        }
     }
 }

@@ -32,6 +32,9 @@ namespace PushToServer.DataModels
         [JsonProperty("title")]
         public string Title { get; set; }
 
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
         [JsonProperty("Comment")]
         public Comment Comment { get; set; }
     }

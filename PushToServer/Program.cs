@@ -17,6 +17,13 @@ namespace PushToServer
             };
 
             algolia.SetSearchableAttributes(index, attributes);
+
+            string[] facetAttributes = {
+                "Blog.Name",
+                "Blog.BlogPost.email",
+            };
+
+            algolia.SetFacetAttributes(index, facetAttributes);
         }
     }
 }
