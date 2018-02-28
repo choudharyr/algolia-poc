@@ -104,7 +104,7 @@ body {
     background-color: #ffffff;
 }
 
-.panel {
+.searchpanel {
     width: 500px;
     margin-top: 10px;
     margin-left: auto;
@@ -115,13 +115,17 @@ body {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
-.panel-heading {
+.searchpanel>.panel-heading {
     padding: 10px 15px;
     font-size: 1em;
     background-color: #00B3FF;
     border-bottom: 1px solid #dddddd;
     border-top-right-radius: 3px;
     border-top-left-radius: 3px;
+}
+
+.checkboxlist > li > input[type=checkbox] {
+    margin-right: 10px;
 }
 
 .bg {
