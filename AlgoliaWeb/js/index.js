@@ -1,5 +1,5 @@
 ﻿// Algolia client. Mandatory to instantiate the Helper.
-var algolia = algoliasearch('CDP0NI9PBE', '833fd7607856c809f180787e17124438');
+var algolia = algoliasearch('ITS0CN36L1', '1abb9727471ce464635a6071b3980302');
 
 // Algolia Helper
 var helper = algoliasearchHelper(algolia, 'Blogs', {

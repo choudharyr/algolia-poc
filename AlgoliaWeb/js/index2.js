@@ -89,7 +89,7 @@ $(document).ready(function () {
     $inputfield = $('#q');
 
     // Replace the following values by your ApplicationID and ApiKey.
-    var client = algoliasearch('CDP0NI9PBE', '833fd7607856c809f180787e17124438');
+    var client = algoliasearch('ITS0CN36L1', '1abb9727471ce464635a6071b3980302');
     // Replace the following value by the name of the index you want to query.
     index = client.initIndex('Blogs');
 
